@@ -5,6 +5,12 @@ use App\Support\Facades\Facebook;
 class EndPointTest extends TestCase
 {
 
+    public function setUp()
+    {
+        parent::setUp();
+        $this->app->bind('facebook', function(){ return null;});
+    }
+
     /**
      * A basic test.
      *
