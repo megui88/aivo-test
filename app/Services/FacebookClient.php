@@ -5,17 +5,23 @@ namespace App\Services;
 
 class FacebookClient implements SocialClient
 {
-    public function __construct()
-    {
+    /**
+     * @var \Facebook\Facebook
+     */
+    private $sdk;
 
+    public function __construct($sdk)
+    {
+        $this->sdk = $sdk;
     }
 
     public function findUser($id)
     {
-        return [
-            "id" => 123456,
-            "firstName" => "Juan",
-            "lastName" => "Perez",
-        ];
+        try {
+            $request = $this->sdk->get('/' . $id . '?fields=id,name,last_name');
+            return $request->getBody();
+        } catch (\Facebook\Exceptions\FacebookResponseException $e) {
+            throw new \Exception($e->getMessage(), 10020);
+        }
     }
 }

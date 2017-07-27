@@ -19,7 +19,7 @@ class SocialProviders
                 return $this->facebookClient;
                 break;
             default:
-                throw new \Exception('The provider is wrong, please try again');
+                throw new \Exception('The provider is wrong, please try again', 10010);
                 break;
         }
     }
