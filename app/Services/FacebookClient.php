@@ -4,19 +4,10 @@ namespace App\Services;
 
 use App\User;
 use Cache;
+use App\Support\Facades\Facebook;
 
 class FacebookClient implements SocialClient
 {
-    /**
-     * @var \Facebook\Facebook
-     */
-    private $sdk;
-
-    public function __construct($sdk)
-    {
-        $this->sdk = $sdk;
-    }
-
     public function findUser($id)
     {
         $cacheKey = 'User:Facebook:' . $id;
@@ -24,7 +15,7 @@ class FacebookClient implements SocialClient
             $body = Cache::get($cacheKey);
         } else {
             try {
-                $request = $this->sdk->get('/' . $id . '?fields=id,name,last_name');
+                $request = Facebook::get('/' . $id . '?fields=id,name,last_name');
             } catch (\Facebook\Exceptions\FacebookResponseException $e) {
                 throw new \Exception($e->getMessage(), 10020);
             }

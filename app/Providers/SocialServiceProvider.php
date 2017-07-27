@@ -12,7 +12,7 @@ class SocialServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind('social_providers', function () {
-            $facebookClient = new FacebookClient($this->app->facebook);
+            $facebookClient = new FacebookClient();
             return new SocialProviders($facebookClient);
         });
     }

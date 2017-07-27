@@ -14,7 +14,6 @@ class Controller extends BaseController
         try {
             $user = $provider->findUser($id);
         }catch (\Exception $e){
-            dd($e->getMessage());
             throw new NotFoundHttpException('Not Found');
         }
         return $user;
