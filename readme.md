@@ -1,6 +1,7 @@
 # Test [Aivo](http://aivo.co/)
 
 [![Build Status](https://travis-ci.org/megui88/aivo-test.svg)](https://travis-ci.org/megui88/aivo-test)
+[![Coverage Status](https://coveralls.io/repos/github/megui88/aivo-test/badge.svg?branch=master)](https://coveralls.io/github/megui88/aivo-test?branch=master)
 
 > ## Retrieve a user profile   
 > ###Objective
