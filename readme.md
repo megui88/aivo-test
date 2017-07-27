@@ -46,12 +46,19 @@
 ## Test solution by Mariano G. Egui 
 
 * The project run in PHP 7.1
-* I used Lumen framework, beacuse is the micro-framework to Laravel.
+* I used Lumen framework, because it's the micro-framework of Laravel.
 * I didn't use data storage on databases level.
-* The project run in docker in develop enviroment.
-* I used Functional Tests, becouse this tests the integration the services with framework context.
+* The project run in docker in develop environment.
+* I used Functional Tests, because this tests the integration the services with framework context.
 * I add Cache layer in the service to storage API response. Just to reduce time response.
 
+
+#### This solution is integrated with TravisCI and Coveralls.io to inform the success and the tests coverage.
+
+
+### Please, is necessary to have
+* docker:  [Ubuntu](https://docs.docker.com/engine/installation/linux/ubuntu/) or [Mac](https://docs.docker.com/docker-for-mac/install/)
+* docker-compose [Ubuntu](https://docs.docker.com/compose/install/) 
 
 ### How to check?
 
@@ -83,7 +90,7 @@ docker-compose exec workspace bash
 $: composer install
 ```
 
-It is necessary you set the API keys in the enviroment file:
+It is necessary you set the API keys in the environment file:
 
 ```
 vim .env
