@@ -38,6 +38,7 @@ class EndPointTest extends TestCase
             'Perez', $response->lastName
         );
     }
+
     /**
      * A basic test.
      *
@@ -59,6 +60,48 @@ class EndPointTest extends TestCase
 
         $this->assertEquals(
             'Not Found', $response->message
+        );
+    }
+
+    /**
+     * A basic test.
+     *
+     * @return void
+     */
+    public function testProviderFail()
+    {
+
+        $this->get('/profile/twitter/123456');
+        $this->assertResponseStatus(500);
+        $response = json_decode($this->response->getContent());
+
+        $this->assertEquals(
+            '10010', $response->code
+        );
+
+        $this->assertEquals(
+            'The provider is wrong, please try again', $response->message
+        );
+    }
+
+    /**
+     * A basic test.
+     *
+     * @return void
+     */
+    public function testNotFound()
+    {
+
+        $this->get('/other/endpoint/123456');
+        $this->assertResponseStatus(404);
+        $response = json_decode($this->response->getContent());
+
+        $this->assertEquals(
+            '404', $response->code
+        );
+
+        $this->assertEquals(
+            '', $response->message
         );
     }
 

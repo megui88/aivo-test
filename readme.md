@@ -3,13 +3,16 @@
 [![Build Status](https://travis-ci.org/megui88/aivo-test.svg)](https://travis-ci.org/megui88/aivo-test)
 [![Coverage Status](https://coveralls.io/repos/github/megui88/aivo-test/badge.svg?branch=master)](https://coveralls.io/github/megui88/aivo-test?branch=master)
 
-> ## Retrieve a user profile   
+> ## Retrieve a user profile
+>
 > ###Objective
 > Build a service which retrieves the profile of one facebook user, using the Facebook API Graph.
 >
 > We expect an API endpoint which we could hit with an facebook id as parameter and the response should be all the 
  possible information about his profile.
+> 
 > ###Example:
+>
 > Request:
 >
 > ```
@@ -25,6 +28,7 @@
 >      "lastName": "Perez"
 >  }
 > ```
+>
 > ###Conditions
 >
 > * The project should be developed using PHP 5.4+
@@ -39,4 +43,50 @@
 > * All added value you can give to the original idea is highly appreciated
 > * Have Fun!
 
- ## Test solution by Mariano G. Egui
+## Test solution by Mariano G. Egui 
+
+* The project run in PHP 7.1
+* I used Lumen framework, beacuse is the micro-framework to Laravel.
+* I didn't use data storage on databases level.
+* The project run in docker in develop enviroment.
+* I used Functional Tests, becouse this tests the integration the services with framework context.
+* I add Cache layer in the service to storage API response. Just to reduce time response.
+
+
+### How to check?
+
+Clone the project:
+
+```
+git clone --recursive git@github.com:megui88/aivo-test.git
+```
+
+Go to laradock and run docker-compose
+
+```
+cd aivo-test/laradock
+cp env-example env
+docker-compose build nginx workspace
+```
+
+Run docker:
+
+```
+docker-compose up -d nginx
+```
+
+Run composer:
+
+```
+docker-compose exec workspace bash
+
+$: composer install
+```
+
+It is necessary you set the API keys in the enviroment file:
+
+```
+vim .env
+```
+
+Test in [localhost:80](http://localhost/)
